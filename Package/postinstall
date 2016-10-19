@@ -1,0 +1,12 @@
+#!/bin/bash
+
+[[ $3 != "/" ]] && exit 0
+
+/usr/bin/python /Library/Security/SecurityAgentPlugins/UserConfigAgentPlugin.bundle/Contents/Resources/update_authdb.py install
+
+user=$(/usr/bin/stat -f '%u' /dev/console)
+[[ -z "$user" ]] && exit 0
+/bin/launchctl load /Library/LaunchDaemons/com.macdevteam.userconfigagentxpcagent.plist
+/bin/launchctl asuser ${user} /bin/launchctl load /Library/LaunchAgents/com.macdevteam.userconfigagentguiagent.plist
+
+exit 0
