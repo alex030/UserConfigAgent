@@ -1,5 +1,5 @@
 # UserConfigAgent
----
+
 is a simple macOS UserAgent App, that checks for configuration files and processes the given actions. Normally run a script to configure an App in different "TargetAppState" stages. E.g. if an App is closed or launched. A configuration "Repeat" mode can be set to run once, always or never. Optional, a UI with a custom configuration message can be presented.
 
 ## Testing
